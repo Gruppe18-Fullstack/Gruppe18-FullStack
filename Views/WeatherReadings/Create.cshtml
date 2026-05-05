@@ -34,7 +34,10 @@
             </div>
             <div class="form-group">
                 <label class="control-label">Station</label>
-                <select asp-for="WeatherStationId" class ="form-control" asp-items="ViewBag.WeatherStationId"></select>
+                 <select asp-for="WeatherStationId" asp-items="ViewBag.WeatherStationId" class="form-control">
+                    <option value="">-- Select a station --</option>
+                </select>
+                <span asp-validation-for="WeatherStationId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
