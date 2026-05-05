@@ -25,7 +25,7 @@
                 @Html.DisplayNameFor(model => model.RecordedAt)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.WeatherStation)
+                Station
             </th>
             <th></th>
         </tr>
@@ -46,7 +46,7 @@
                 @Html.DisplayFor(modelItem => item.RecordedAt)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.WeatherStation.Location)
+                @item.WeatherStation?.Name
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
