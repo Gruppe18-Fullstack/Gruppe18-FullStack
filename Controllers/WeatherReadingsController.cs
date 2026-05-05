@@ -22,8 +22,10 @@ namespace Gruppe18_FullStack.Controllers
         // GET: WeatherReadings
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.WeatherReadings.Include(w => w.WeatherStation);
-            return View(await applicationDbContext.ToListAsync());
+            var readings = await _context.WeatherReadings
+                .Include(r => r.WeatherStation)
+                .ToListAsync();
+            return View(readings);
         }
 
         // GET: WeatherReadings/Details/5
@@ -48,7 +50,8 @@ namespace Gruppe18_FullStack.Controllers
         // GET: WeatherReadings/Create
         public IActionResult Create()
         {
-            ViewData["WeatherStationId"] = new SelectList(_context.WeatherStations, "Id", "Location");
+            ViewData["WeatherStationId"] = new SelectList(
+                _context.WeatherStations, "Id", "Name");
             return View();
         }
 
