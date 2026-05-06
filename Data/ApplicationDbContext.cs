@@ -1,9 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using Gruppe18_FullStack.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Gruppe18_FullStack.Data;
 
-public class ApplicationDbContext : DbContext
+public class ApplicationDbContext : IdentityDbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options) { }
