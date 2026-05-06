@@ -1,8 +1,27 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="max-w-2xl mx-auto mt-32 text-center">
+    <h1 class="text-3xl font-bold text-slate-800 mb-20" style="font-size: 110px">
+        Welcome👋
+    </h1>
+
+    <p class="text-slate-600 mb-10 text-lg">
+        This application manages weather stations and weather readings.
+    </p>
+
+    <div class="space-x-4 mt-4">
+        <a asp-controller="WeatherStations"
+           asp-action="Index"
+           class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+            Weather Stations
+        </a>
+
+        <a asp-controller="WeatherReadings"
+           asp-action="Index"
+           class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+            Weather Readings
+        </a>
+    </div>
 </div>
