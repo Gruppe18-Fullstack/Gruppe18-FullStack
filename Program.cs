@@ -1,9 +1,14 @@
 using Gruppe18_FullStack.Data;
+using Gruppe18_FullStack.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddHttpClient<WeatherApiService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

@@ -8,10 +8,14 @@
     <h1 class="text-2xl font-bold text-slate-800 mb-2">Weather Readings</h1>
     <p class="text-slate-500 mb-6">Overview of all weather measurements</p>
 
-    <div class="mb-4">
+    <div class="mb-4 space-x-3">
         <a asp-action="Create"
            class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
             Create New
+        </a>
+        <a asp-action="ImportFromApi"
+            class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+            Import Weather Data
         </a>
     </div>
 

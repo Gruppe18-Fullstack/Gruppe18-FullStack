@@ -7,16 +7,20 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Gruppe18_FullStack.Data;
 using Gruppe18_FullStack.Models;
+using Gruppe18_FullStack.Services;
+using System.Runtime.CompilerServices;
 
 namespace Gruppe18_FullStack.Controllers
 {
     public class WeatherReadingsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly WeatherApiService _weatherApiService;
 
-        public WeatherReadingsController(ApplicationDbContext context)
+        public WeatherReadingsController(ApplicationDbContext context, WeatherApiService weatherApiService)
         {
             _context = context;
+            _weatherApiService = weatherApiService;
         }
 
         // GET: WeatherReadings
@@ -26,6 +30,11 @@ namespace Gruppe18_FullStack.Controllers
                 .Include(r => r.WeatherStation)
                 .ToListAsync();
             return View(readings);
+        }
+        public async Task<IActionResult> ImportFromApi()
+        {
+            await _weatherApiService.ImportWeatherData();
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: WeatherReadings/Details/5
