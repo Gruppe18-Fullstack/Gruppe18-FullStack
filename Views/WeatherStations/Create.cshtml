@@ -4,43 +4,46 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<div class="max-w-md mx-auto mt-8">
+    <h1 class="text-2xl font-bold text-slate-800 mb-2">Create Weather Station</h1>
+    <p class="text-slate-500 mb-6">Add a new weather station</p>
 
-<h4>WeatherStation</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Location" class="control-label"></label>
-                <input asp-for="Location" class="form-control" />
-                <span asp-validation-for="Location" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Latitude" class="control-label"></label>
-                <input asp-for="Latitude" class="form-control" />
-                <span asp-validation-for="Latitude" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Longitude" class="control-label"></label>
-                <input asp-for="Longitude" class="form-control" />
-                <span asp-validation-for="Longitude" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+    <form asp-action="Create" class="space-y-4">
+        <div asp-validation-summary="ModelOnly" class="text-red-500"></div>
+
+        <div>
+            <label asp-for="Name" class="block font-medium mb-1"></label>
+            <input asp-for="Name" class="w-full border rounded px-3 py-2" />
+            <span asp-validation-for="Name" class="text-red-500 text-sm"></span>
+        </div>
+
+        <div>
+            <label asp-for="Location" class="block font-medium mb-1"></label>
+            <input asp-for="Location" class="w-full border rounded px-3 py-2" />
+            <span asp-validation-for="Location" class="text-red-500 text-sm"></span>
+        </div>
+
+        <div>
+            <label asp-for="Latitude" class="block font-medium mb-1"></label>
+            <input asp-for="Latitude" class="w-full border rounded px-3 py-2" />
+            <span asp-validation-for="Latitude" class="text-red-500 text-sm"></span>
+        </div>
+
+        <div>
+            <label asp-for="Longitude" class="block font-medium mb-1"></label>
+            <input asp-for="Longitude" class="w-full border rounded px-3 py-2" />
+            <span asp-validation-for="Longitude" class="text-red-500 text-sm"></span>
+        </div>
+
+        <div class="pt-2">
+            <input type="submit" value="Create"
+                   class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" />
+        </div>
+    </form>
+
+    <div class="mt-4">
+        <a asp-action="Index" class="text-blue-600 hover:underline">Back to List</a>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

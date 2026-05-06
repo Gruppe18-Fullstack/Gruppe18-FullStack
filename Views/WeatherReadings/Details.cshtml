@@ -4,45 +4,40 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<div class="max-w-md mx-auto mt-8">
+    <h1 class="text-2xl font-bold text-slate-800 mb-2">Weather Reading Details</h1>
+    <p class="text-slate-500 mb-6">View weather measurement information</p>
 
-<div>
-    <h4>WeatherReading</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Temperature)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Temperature)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.WindSpeed)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.WindSpeed)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Humidity)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Humidity)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.RecordedAt)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.RecordedAt)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.WeatherStation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.WeatherStation.Location)
-        </dd>
-    </dl>
+    <div class="border rounded p-4 space-y-3">
+        <div>
+            <span class="font-medium">Temperature:</span>
+            <span>@Html.DisplayFor(model => model.Temperature)</span>
+        </div>
+
+        <div>
+            <span class="font-medium">WindSpeed:</span>
+            <span>@Html.DisplayFor(model => model.WindSpeed)</span>
+        </div>
+
+        <div>
+            <span class="font-medium">Humidity:</span>
+            <span>@Html.DisplayFor(model => model.Humidity)</span>
+        </div>
+
+        <div>
+            <span class="font-medium">RecordedAt:</span>
+            <span>@Html.DisplayFor(model => model.RecordedAt)</span>
+        </div>
+
+        <div>
+            <span class="font-medium">Station:</span>
+            <span>@Html.DisplayFor(model => model.WeatherStation.Location)</span>
+        </div>
+    </div>
+
+    <div class="mt-4 space-x-3">
+        <a asp-action="Edit" asp-route-id="@Model?.Id" class="text-blue-600 hover:underline">Edit</a>
+        <a asp-action="Index" class="text-blue-600 hover:underline">Back to List</a>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+

@@ -4,49 +4,64 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<div class="max-w-md mx-auto mt-8">
+    <h1 class="text-2xl font-bold text-slate-800 mb-2">Edit Weather Reading</h1>
+    <p class="text-slate-500 mb-6">Update the weather measurement below</p>
 
-<h4>WeatherReading</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Temperature" class="control-label"></label>
-                <input asp-for="Temperature" class="form-control" />
-                <span asp-validation-for="Temperature" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="WindSpeed" class="control-label"></label>
-                <input asp-for="WindSpeed" class="form-control" />
-                <span asp-validation-for="WindSpeed" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Humidity" class="control-label"></label>
-                <input asp-for="Humidity" class="form-control" />
-                <span asp-validation-for="Humidity" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RecordedAt" class="control-label"></label>
-                <input asp-for="RecordedAt" class="form-control" />
-                <span asp-validation-for="RecordedAt" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label class="control-label">Station</label>
-                <select asp-for="WeatherStationId" class="form-control" asp-items="ViewBag.WeatherStationId"></select>
-                <span asp-validation-for="WeatherStationId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+    <form asp-action="Edit" class="space-y-4">
+        <div asp-validation-summary="ModelOnly" class="text-red-500"></div>
+
+        <input type="hidden" asp-for="Id" />
+
+        <div>
+            <label asp-for="Temperature" class="block font-medium mb-1"></label>
+            <input asp-for="Temperature" class="w-full border rounded px-3 py-2" />
+            <span asp-validation-for="Temperature" class="text-red-500 text-sm"></span>
+        </div>
+
+        <div>
+            <label asp-for="WindSpeed" class="block font-medium mb-1"></label>
+            <input asp-for="WindSpeed" class="w-full border rounded px-3 py-2" />
+            <span asp-validation-for="WindSpeed" class="text-red-500 text-sm"></span>
+        </div>
+
+        <div>
+            <label asp-for="Humidity" class="block font-medium mb-1"></label>
+            <input asp-for="Humidity" class="w-full border rounded px-3 py-2" />
+            <span asp-validation-for="Humidity" class="text-red-500 text-sm"></span>
+        </div>
+
+        <div>
+            <label asp-for="RecordedAt" class="block font-medium mb-1"></label>
+            <input asp-for="RecordedAt" class="w-full border rounded px-3 py-2" />
+            <span asp-validation-for="RecordedAt" class="text-red-500 text-sm"></span>
+        </div>
+
+        <div>
+            <label class="block font-medium mb-1">Station</label>
+
+            <select asp-for="WeatherStationId"
+                    asp-items="ViewBag.WeatherStationId"
+                    class="w-full border rounded px-3 py-2">
+            </select>
+
+            <span asp-validation-for="WeatherStationId"
+                  class="text-red-500 text-sm"></span>
+        </div>
+
+        <div class="pt-2">
+            <input type="submit"
+                   value="Save"
+                   class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" />
+        </div>
+    </form>
+
+    <div class="mt-4">
+        <a asp-action="Index"
+           class="text-blue-600 hover:underline">
+            Back to List
+        </a>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

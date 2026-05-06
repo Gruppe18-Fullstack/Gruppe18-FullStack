@@ -1,53 +1,46 @@
 @model IEnumerable<Gruppe18_FullStack.Models.WeatherStation>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Weather Stations";
 }
 
-<h1>Index</h1>
+<div class="max-w-5xl mx-auto mt-8">
+    <div class="flex items-center justify-between mb-6">
+        <h1 class="text-3xl font-bold text-slate-800">Weather Stations</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Location)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Latitude)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Longitude)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Latitude)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Longitude)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+        <a asp-action="Create"
+           class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+            Create New
+        </a>
+    </div>
+
+    <div class="bg-white shadow rounded-xl overflow-hidden">
+        <table class="w-full table-auto">
+            <thead class="bg-slate-100">
+                <tr>
+                    <th class="text-left px-4 py-3 font-semibold">Name</th>
+                    <th class="text-left px-4 py-3 font-semibold">Location</th>
+                    <th class="text-left px-4 py-3 font-semibold">Latitude</th>
+                    <th class="text-left px-4 py-3 font-semibold">Longitude</th>
+                    <th class="text-left px-4 py-3 font-semibold">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="border-t hover:bg-slate-50">
+                        <td class="px-4 py-3">@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td class="px-4 py-3">@Html.DisplayFor(modelItem => item.Location)</td>
+                        <td class="px-4 py-3">@Html.DisplayFor(modelItem => item.Latitude)</td>
+                        <td class="px-4 py-3">@Html.DisplayFor(modelItem => item.Longitude)</td>
+                        <td class="px-4 py-3 space-x-2">
+                            <a class="text-blue-600 hover:underline" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            <a class="text-slate-600 hover:underline" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                            <a class="text-red-600 hover:underline" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

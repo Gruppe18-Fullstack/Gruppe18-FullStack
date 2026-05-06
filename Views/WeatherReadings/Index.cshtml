@@ -4,56 +4,88 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="max-w-5xl mx-auto mt-8">
+    <h1 class="text-2xl font-bold text-slate-800 mb-2">Weather Readings</h1>
+    <p class="text-slate-500 mb-6">Overview of all weather measurements</p>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Temperature)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WindSpeed)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Humidity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RecordedAt)
-            </th>
-            <th>
-                Station
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+    <div class="mb-4">
+        <a asp-action="Create"
+           class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+            Create New
+        </a>
+    </div>
+
+    <table class="w-full border-collapse">
+        <thead>
+            <tr class="border-b">
+                <th class="text-left p-3">
+                    @Html.DisplayNameFor(model => model.Temperature)
+                </th>
+
+                <th class="text-left p-3">
+                    @Html.DisplayNameFor(model => model.WindSpeed)
+                </th>
+
+                <th class="text-left p-3">
+                    @Html.DisplayNameFor(model => model.Humidity)
+                </th>
+
+                <th class="text-left p-3">
+                    @Html.DisplayNameFor(model => model.RecordedAt)
+                </th>
+
+                <th class="text-left p-3">
+                    Station
+                </th>
+
+                <th class="p-3"></th>
+            </tr>
+        </thead>
+
+        <tbody>
 @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Temperature)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.WindSpeed)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Humidity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RecordedAt)
-            </td>
-            <td>
-                @item.WeatherStation?.Name
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+            <tr class="border-b">
+                <td class="p-3">
+                    @Html.DisplayFor(modelItem => item.Temperature)
+                </td>
+
+                <td class="p-3">
+                    @Html.DisplayFor(modelItem => item.WindSpeed)
+                </td>
+
+                <td class="p-3">
+                    @Html.DisplayFor(modelItem => item.Humidity)
+                </td>
+
+                <td class="p-3">
+                    @Html.DisplayFor(modelItem => item.RecordedAt)
+                </td>
+
+                <td class="p-3">
+                    @item.WeatherStation?.Name
+                </td>
+
+                <td class="p-3 space-x-2">
+                    <a asp-action="Edit"
+                       asp-route-id="@item.Id"
+                       class="text-blue-600 hover:underline">
+                        Edit
+                    </a>
+
+                    <a asp-action="Details"
+                       asp-route-id="@item.Id"
+                       class="text-blue-600 hover:underline">
+                        Details
+                    </a>
+
+                    <a asp-action="Delete"
+                       asp-route-id="@item.Id"
+                       class="text-red-600 hover:underline">
+                        Delete
+                    </a>
+                </td>
+            </tr>
 }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
