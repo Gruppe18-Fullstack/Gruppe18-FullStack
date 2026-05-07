@@ -130,6 +130,7 @@ Once logged in, you can navigate using the top navbar:
 ## Project Structure
 
 This project consists of two separate folders:
+```
 [Your extraction folder]
 ├── Gruppe18-FullStack/              (Main application - this is what you run)
 │   ├── Controllers/                 (Handles user requests and coordinates actions)
@@ -150,7 +151,7 @@ This project consists of two separate folders:
 └── Gruppe18-FullStack.Tests/       (Automated tests - separate folder)
     ├── WeatherStationsControllerTests.cs
     └── Gruppe18-FullStack.Tests.csproj
-
+```
 **Important:** The test project is in a **separate folder** (not inside the main project). This is standard practice for ASP.NET projects and follows professional software development conventions.
 
 ---
