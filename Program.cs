@@ -15,8 +15,26 @@ builder.Services.AddHttpClient<WeatherApiService>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
-builder.Services.AddDefaultIdentity<IdentityUser>()
+builder.Services.AddDefaultIdentity<IdentityUser>(options => {
+    // No special options needed here
+})
     .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Identity/Account/Login";
+    options.LogoutPath = "/Identity/Account/Logout";
+    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+    options.Events.OnRedirectToLogin = context =>
+    {
+        context.Response.Redirect("/Identity/Account/Login");
+        return Task.CompletedTask;
+    };
+    options.Events.OnRedirectToLogout = context =>
+    {
+        context.Response.Redirect("/");
+        return Task.CompletedTask;
+    };
+});
 
 var app = builder.Build();
 
@@ -40,7 +58,8 @@ app.MapStaticAssets();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}")
-    .WithStaticAssets();
+    .WithStaticAssets()
+    .RequireAuthorization();
 
 app.MapRazorPages();
 
